@@ -100,8 +100,8 @@ Du kannst zur Brücke, um zu gucken was los ist oder zum Reaktor, um den Alarm a
                 }
             }
                 
-            }
         }
+    }
                 if num2 == 2{
                     println!("\nDu gehst zum Reaktor.\n");
                     loop {
