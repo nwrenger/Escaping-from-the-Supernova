@@ -10,7 +10,7 @@ pub fn seeder(seed: u8) -> u8 {
         seed
     } else {
         let mut rng = rand::thread_rng();
-        rng.gen::<u8>() // generates a float between 0 and 1
+        rng.gen::<u8>() // generates an usize between 0 and 255
     };
     s
 }
