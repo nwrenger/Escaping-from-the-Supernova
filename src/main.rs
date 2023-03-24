@@ -1,5 +1,6 @@
-use std::thread;
+use std::{thread};
 use std::{io, time::Duration};
+mod generation;
 
 
 
@@ -12,12 +13,12 @@ fn main() {
 |  __| / __| / __| / _` || '_ \ | || '_ \  / _` | |  _|| '__| / _ \ | '_ ` _ \ 
 | |___ \__ \| (__ | (_| || |_) || || | | || (_| | | |  | |   | (_) || | | | | |
 \____/ |___/ \___| \__,_|| .__/ |_||_| |_| \__, | |_|  |_|    \___/ |_| |_| |_|
-                        | |                __/ |                              
-                        |_|               |___/                               "#);
-
-    thread::sleep(Duration::from_secs_f64(1.5));
-    println!(
-        r#"
+                         | |                __/ |                              
+                         |_|               |___/                               "#);
+        
+        thread::sleep(Duration::from_secs_f64(1.5));
+        println!(
+            r#"
  _    _             _____                                                       
 | |  | |           /  ___|                                                      
 | |_ | |__    ___  \ `--.  _   _  _ __    ___  _ __  _ __    ___  __   __  __ _ 
@@ -28,6 +29,16 @@ fn main() {
                                  |_|                                            "#);
     thread::sleep(Duration::from_secs_f64(1.5));
     println!("a Textadventure from Nils Wrenger\n");
+    thread::sleep(Duration::from_secs_f64(1.0));
+    let mut seed: u8 = loop {
+            if let Some(seed) = question("Give your current seed or 0 for a random seed:", 255) {
+                break seed.try_into().unwrap();
+            }
+    };
+    seed = generation::seeder(seed);
+    println!("Your current Seed:{:?}", seed);
+    let data = generation::generator(seed);
+    println!("Data:{:?}", data);
     thread::sleep(Duration::from_secs_f64(1.0));
     loop {
         let num = loop {
@@ -137,14 +148,14 @@ fn question(q: &str, a: usize) -> Option<usize> {
     io::stdin().read_line(&mut guess).unwrap();
 
     let Ok(num) = guess.trim().parse() else {
-        println!("Wrong Input, give Numbers\n");
+        println!("\nWrong Input, give Numbers\n");
         return None;
     };
 
     if num <= a {
         Some(num)
     } else {
-        println!("Number out of Range\n");
+        println!("\nNumber out of Range\n");
         None
     }
 }
