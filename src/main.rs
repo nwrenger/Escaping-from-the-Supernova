@@ -27,74 +27,74 @@ fn main() {
                                  | |                                            
                                  |_|                                            "#);
     thread::sleep(Duration::from_secs_f64(1.5));
-    println!("ein Textadventure von Nils Wrenger\n");
+    println!("a Textadventure from Nils Wrenger\n");
     thread::sleep(Duration::from_secs_f64(1.0));
     loop {
         let num = loop {
-            if let Some(num) = question("Du befindest dich auf deinem Raumschiff. Du bist auf dem Weg zu deinem Heimat Planeten, die Erde.\nDu hattest gerade deine letze Mission des Monats beendet und willst dich endlich mal ein bisschen entspannen.\nDu legst dich in dein Bett und lässt den Autopilot das Raumschiff steuern. Aber dann hörst einen Schiffsalarm.\nDu stehst auf. Da du immer die Tür zu deinem Quartier mit einem altmodischen Schlüssel abschließt, brauchst du diesen. Wo liegt der Schlüssel?\n(Hosen(1), Medizin Schrank(2), unterm Bett(3), wieder sich ins Bett legen(4))", 4) {
+            if let Some(num) = question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with an old-fashioned key, you need it. Where is the key?\n(Pants(1), Medicine Carbinet(2), under the bed(3), go back to sleep(4))", 4) {
                 break num;
             }
         };
         if num == 1 || num == 2 {
-            println!("\nDa findest du leider nichts\n");
+            println!("\nUnfortunately, you don't find anything there.\n");
         }
         if num == 3 {
             loop {
                 let num2: usize = loop {
                     if let Some(num2) = question(r#"
-Da ist der Schlüssel.
-Du schließt die Tür auf.
+There's the key.
+You unlock the door.
      ┌───┐     
     ┌┘   └┐    
     │  1  │    
 ┌───┼─────┼───┐
 │ Y │     │ 2 │
 └───┴─────┴───┘
-Du kannst zur Brücke, um zu gucken was los ist oder zum Reaktor, um den Alarm abzustellen.
-(Deine Position(Y), Brücke(1), Reaktor(2))"#, 2){
+You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
+(Your position(Y), Bridge(1), Reactor(2))"#, 2){
                         break num2;
                         }
                     };
                 if num2 == 1{
-                    println!("\nDu gehst zur Brücke.\n");
+                    println!("\nYou go to the bridge.\n");
                     loop{
                         let num3: usize = loop {
-                            if let Some(num3) = question("In der Brücke kannst du dir die Steuer Konsole ansehen oder eine nervige Fliege angreifen.\n(Steuer Konsole(1), nervige Fliege(2))\n", 2) {
+                            if let Some(num3) = question("In the bridge, you can take a look at the control console or attack an annoying fly.\n(control console(1), annoying Fly(2))\n", 2) {
                                 break num3;
                             }
                         };     
                 if num3 == 1 {
-                    println!("Auf der Steuerkonsole siehst du, wie in den nächsetn 5 Minuten ein Supernova das Schiff wegfegen wird.");
+                    println!("On the control console, you see that a supernova will obliterate the ship and you in the next 5 minutes.");
                     loop {
                         let num4: usize = loop {
-                            if let Some(num4) = question("Willst du hinter ein Mond in der nähe Fliegen oder nichts machen und auf dein Tod warten?\n(Hinter Mond fliegen(1), Auf Tod warten(2))\n", 2) {
+                            if let Some(num4) = question("Do you want to fly behind a moon nearby or do nothing and wait for your death?\n(Fly behind moon(1), Wait for death(2))\n", 2) {
                                 break num4; 
                             }
                         };
                         if num4 == 1 {
-                            println!("Hat der Mond dich beschützt? Ja, da der Mond einen Zitanium Anteil hat, der jede Art von Energie, Schockwellen, etc. reflektiert.\nDu legst dich wieder hin, schaltest den Autopilot ein und genießt den Schlaf und die Erholung. Du hast überlebt!\n");
+                            println!("Did the moon protect you? Yes, as the moon has a zitanium component that reflects any kind of energy, shockwaves, etc.\nYou lie down again, turn on the autopilot, and enjoy the sleep and relaxation. You have survived!\n");
                             return;
                         }
                         if num4 == 2 {
-                            println!("Das hast du dann auch geatan...Du bist gestorben!\n");
+                            println!("You did that too...You died!\n");
                             return;
                         }
                     }
                 }
                 if num3 == 2 {
-                    println!("Du gehst zu nerfigen Fliege\n");
+                    println!("You go to the annoying fly.\n");
                     loop {
                         let num5:usize = loop {
-                            if let Some(num5) = question("Willst du die Fliege Töten oder mit ihr Verhandel?\n(Töten(1), Verhandeln(2))\n", 2){
+                            if let Some(num5) = question("Do you want to kill the fly or negotiate with it?\n(kill(1), negotiate(2))\n", 2){
                                 break num5;
                             }
                     };
                     if num5 == 1 {
-                        println!("Du benutzt deinen Laser und machst der Fliege 2d4 Schaden.\nDabei Sprengst du leider ein Loch in die Hülle des Schiffes und alles Fliegt ins Vakuum des Weltalls...Auch du. Du bist Gestorben!\n");
+                        println!("ou use your laser and deal 2d4 damage to the fly.\nUnfortunately, you also blast a hole in the hull of the ship, and everything gets sucked out into the vacuum of space, including you. You have died!\n");
                         return;
                     }
                     if num5 == 2 {
-                        println!("Du verhandelst mit der Fliege aus, dass sie weniger rum nervt und gehst zur Steuer Konsole.\nLeider war es schon zu Spät. Du konntest nur noch einen Timer sehen, der anzeigt wann die Supernova dich erreicht.\nDieser war gerade auf 00:00 gefallen...Du bist gestorben!\n");
+                        println!("You negotiate with the fly and convince it to be less annoying before heading to the control console.\nUnfortunately, it was already too late. You could only see a timer indicating when the supernova would reach you,\nand it had just reached 00:00. You have died!\n");
                         return;
                     }
                 }
@@ -103,20 +103,20 @@ Du kannst zur Brücke, um zu gucken was los ist oder zum Reaktor, um den Alarm a
         }
     }
                 if num2 == 2{
-                    println!("\nDu gehst zum Reaktor.\n");
+                    println!("\nYou go to the reactor.\n");
                     loop {
                         let num6: usize = loop{
-                            if let Some(num6) = question("Du kannst den Alarm Deaktivieren und wieder ins Bett gehen oder wieder zurück in den vorherigen Raum gehen.\n(Alarm Deaktivieren und wieder schlafen gehen(1), wieder zurückgehen(2))\n", 2) {
+                            if let Some(num6) = question("You can deactivate the alarm and go back to sleep, or go back to the previous room.\n(Deactivate alarm and go back to sleep(1), Go back(2))\n", 2) {
                                 break num6;
                             }
                         };
                     if num6 == 1 {
-                        println!("Du gehst wieder Schlafen. Aber da war doch was? Ja eine Supernova...Du bist gestorben!\n");
+                        println!("You go back to sleep. But wait, there was something you forgot? Oh, right, a supernova... You have died!\n");
                         return;
                     }     
                     
                     if num6 == 2 {
-                        println!("Du gehst zum vorherigen Raum zurück.\n");
+                        println!("You go back to the previous room.\n");
                         break;
                     }
                 }
@@ -125,7 +125,7 @@ Du kannst zur Brücke, um zu gucken was los ist oder zum Reaktor, um den Alarm a
     }
 
         if num == 4 {
-            println!("\nZum Glück überlebst du. Aber von was oder wie? Der Schiffsalarm kam von einer anstehenden Supernova.\nAber wegen einer Fliege, die ausversehen nen Knopf auf der Brücke gedrückt hatte, hat sich das Schiff in Bewegung gesetzt und hinter einem Mond angehalten. Du hast überlebt! Und nicht mal gewusst in was für einer Gefahr du warst!\n");
+            println!("\nLuckily, you survived. But how? The ship's alarm was triggered by an impending supernova.\nHowever, because of a fly that accidentally pressed a button on the bridge, the ship had started moving and had come to a stop behind a moon. You have survived! And you didn't even know what danger you were in!\n");
             return;
         }
     }
