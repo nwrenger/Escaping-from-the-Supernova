@@ -31,7 +31,7 @@ fn main() {
     thread::sleep(Duration::from_secs_f64(1.0));
     loop {
         let num = loop {
-            if let Some(num) = question("Du befindest dich auf deinem Raumschiff. Du bist auf dem Weg zu deinem Heimat Planeten, die Erde.\nDu hattest gerade deine letze Mission des Monats beendet und willst dich endlich mal ein bisschen entspannen.\nDu legst dich in dein Bett und lässt den Autopilot das Raumschiff steuern. Aber dann hörst einen Schiffsalarm.\nDu stehst auf. Da du immer die Tür zu deinem Quartier mit einem altmodischen Schlüssel abschließt, brauchst du diesen. Wo liegt der Schlüssel?\n(Hosen(1), Medizin Schrank(2), unterm Bett(3), wieder sich ins Bett legen(4))", 4) {
+            if let Some(num) = question("Du befindest dich auf deinem Raumschiff. Du bist auf dem Weg zu deinem Heimat Planeten, die Erde.\nDu hattest gerade deine letze Mission des Monats beendet und willst dich endlich mal ein bisschen entspannen.\nDu legst dich in dein Bett und lässt den Autopilot das Raumschiff steuern. Aber dann hörst einen Schiffsalarm.\nDu stehst auf. Da du immer die Tür zu deinem Quartier mit einem altmodischen Schlüssel abschließt, brauchst du diesen. Wo liegt der Schlüssel?\n(Hosen(1), Medizin Schrank(2), unterm Bett(3), wieder Schlafen gehen(4))", 4) {
                 break num;
             }
         };
@@ -64,7 +64,7 @@ Du kannst zur Brücke, um zu gucken was los ist oder zum Reaktor, um den Alarm a
                             }
                         };     
                 if num3 == 1 {
-                    println!("Auf der Steuerkonsole siehst du, wie in den nächsetn 5 Minuten ein Supernova das Schiff wegfegen wird.");
+                    println!("Auf der Steuerkonsole siehst du, wie in den nächsetn 5 Minuten ein Supernova das Schiff und dich wegfegen wird.");
                     loop {
                         let num4: usize = loop {
                             if let Some(num4) = question("Willst du hinter ein Mond in der nähe Fliegen oder nichts machen und auf dein Tod warten?\n(Hinter Mond fliegen(1), Auf Tod warten(2))\n", 2) {
@@ -90,11 +90,11 @@ Du kannst zur Brücke, um zu gucken was los ist oder zum Reaktor, um den Alarm a
                             }
                     };
                     if num5 == 1 {
-                        println!("Du benutzt deinen Laser und machst der Fliege 2d4 Schaden.\nDabei Sprengst du leider ein Loch in die Hülle des Schiffes und alles Fliegt ins Vakuum des Weltalls...Auch du. Du bist Gestorben!\n");
+                        println!("Du benutzt deinen Laser und machst der Fliege 2d4 Schaden.\nDabei Sprengst du leider ein Loch in die Hülle des Schiffes und alles Fliegt ins Vakuum des Weltalls, auch du. Du bist Gestorben!\n");
                         return;
                     }
                     if num5 == 2 {
-                        println!("Du verhandelst mit der Fliege aus, dass sie weniger rum nervt und gehst zur Steuer Konsole.\nLeider war es schon zu Spät. Du konntest nur noch einen Timer sehen, der anzeigt wann die Supernova dich erreicht.\nDieser war gerade auf 00:00 gefallen...Du bist gestorben!\n");
+                        println!("Du verhandelst mit der Fliege aus, dass sie weniger rum nervt und gehst zur Steuer Konsole.\nLeider war es schon zu Spät. Du konntest nur noch einen Timer sehen, der anzeigt wann die Supernova dich erreicht,\nund dieser war gerade auf 00:00 gefallen. Du bist gestorben!\n");
                         return;
                     }
                 }
@@ -111,7 +111,7 @@ Du kannst zur Brücke, um zu gucken was los ist oder zum Reaktor, um den Alarm a
                             }
                         };
                     if num6 == 1 {
-                        println!("Du gehst wieder Schlafen. Aber da war doch was? Ja eine Supernova...Du bist gestorben!\n");
+                        println!("Du gehst wieder Schlafen. Aber da war doch was? Ja eine Supernova... Du bist gestorben!\n");
                         return;
                     }     
                     
