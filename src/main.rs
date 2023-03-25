@@ -15,7 +15,7 @@ fn main() {
 \____/ |___/ \___| \__,_|| .__/ |_||_| |_| \__, | |_|  |_|    \___/ |_| |_| |_|
                          | |                __/ |                              
                          |_|               |___/                               "#);
-        
+
         thread::sleep(Duration::from_secs_f64(1.5));
         println!(
             r#"
@@ -29,16 +29,20 @@ fn main() {
                                  |_|                                            "#);
     thread::sleep(Duration::from_secs_f64(1.5));
     println!("a Textadventure from Nils Wrenger\n");
+
     thread::sleep(Duration::from_secs_f64(1.0));
     let mut seed: u8 = loop {
             if let Some(seed) = question("Give your current seed or 0 for a random seed:", 255) {
                 break seed.try_into().unwrap();
             }
     };
+
     seed = generation::seeder(seed);
     println!("Your current Seed:{:?}", seed);
+
     let data = generation::generator(seed);
     println!("Data:{:?}", data);
+
     thread::sleep(Duration::from_secs_f64(1.0));
     loop {
         let num = loop {
