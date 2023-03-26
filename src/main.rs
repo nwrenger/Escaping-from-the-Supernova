@@ -52,10 +52,7 @@ fn main() {
     thread::sleep(Duration::from_secs_f64(1.0));
     loop {
         let input = questions::questions(data[0], 1);
-        if input == 1 || input == 2 {
-            questions::answers(data[0], 1, input);
-        }
-        if input == 3 {
+        if input == data[0] {
             loop {
                 let input = questions::questions(data[1], 2);
                 if input == 1 {
@@ -75,6 +72,8 @@ fn main() {
         if input == 4 {
             questions::answers(data[0], 1, input);
             return;
+        } else {
+            questions::answers(data[0], 1, input);
         }
     }
 }
