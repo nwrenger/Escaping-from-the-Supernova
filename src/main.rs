@@ -37,7 +37,11 @@ fn main() {
     println!("a Textadventure from {}\n", "Nils Wrenger".red());
 
     thread::sleep(Duration::from_secs_f64(1.0));
-    let seed = questions::question_advanced("Give your current seed or press enter for a random seed:", 255, true);
+    let seed = questions::question_advanced(
+        "Give your current seed or press enter for a random seed:",
+        255,
+        true,
+    );
 
     let seed = generation::seeder(seed);
     println!("Your current Seed:{seed:?}");
