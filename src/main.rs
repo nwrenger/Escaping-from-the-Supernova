@@ -47,7 +47,7 @@ fn main() {
     println!("Your current Seed:{seed:?}");
 
     let data = generation::generator(seed);
-    println!("Data:{data:?}");
+    // println!("Data:{data:?}");
 
     thread::sleep(Duration::from_secs_f64(1.0));
     loop {
