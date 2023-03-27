@@ -44,7 +44,7 @@ fn main() {
     );
 
     let seed = generation::seeder(seed);
-    println!("Your current Seed:{seed:?}");
+    println!("Your current Seed: {seed:?}");
 
     let data = generation::generator(seed);
     // println!("Data:{data:?}");
@@ -58,12 +58,14 @@ fn main() {
                 if input == 1 {
                     questions::answers(data[1], 2, input);
                     questions::questions(data[2], 3);
+                    println!("Your current Seed: {seed:?}");
                     return;
                 }
                 if input == 2 {
                     questions::answers(data[2], 3, input);
                     let input = questions::questions(data[3], 4);
                     if input == 137 {
+                        println!("Your current Seed: {seed:?}");
                         return;
                     }
                 }
@@ -71,6 +73,7 @@ fn main() {
         }
         if input == 4 {
             questions::answers(data[0], 1, input);
+            println!("Your current Seed: {seed:?}");
             return;
         } else {
             questions::answers(data[0], 1, input);
