@@ -183,7 +183,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
                 }
             }
             if input == 2 {
-                println!("You go to the Flux Capacitor.\n");
+                println!("You go to the annoying Fly.\n");
                 loop {
                     let num = question("Do you want to kill the fly or negotiate with it?\n(kill(1), negotiate(2))", 2);
                     if num == 1 {
