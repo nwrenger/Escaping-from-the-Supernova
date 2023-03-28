@@ -62,7 +62,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
                 answers(1, 3, input);
                 return input;
             }
-            else if input == 2 {
+            if input == 2 {
                 answers(1, 3, input);
                 return input;
             }
@@ -76,7 +76,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
                 answers(2, 3, input);
                 return input;
             }
-            else if input == 2 {
+            if input == 2 {
                 answers(2, 3, input);
                 return input;
             }
@@ -90,7 +90,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
                 answers(3, 3, input);
                 return input;
             }
-            else if input == 2 {
+            if input == 2 {
                 answers(3, 3, input);
                 return input;
             }
@@ -116,7 +116,8 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
             if input == 1 {
                 answers(2, 4, input);
                 return input;
-            } else if input == 2 {
+            }
+            if input == 2 {
                 answers(2, 4, input);
                 return 137;
             }
@@ -130,7 +131,8 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
             if input == 1 {
                 answers(3, 4, input);
                 return input;
-            } else if input == 2 {
+            }
+            if input == 2 {
                 answers(3, 4, input);
                 return input;
             }
@@ -151,8 +153,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
                 return;
             }
             if input == 4 {
-                println!("\nLuckily, you survived. But how and from what? The ship's alarm was triggered by an impending supernova.\nHowever, because of *redacted* you have survived! And you didn't even know what danger you were in!\n");
-                return;
+                println!("\nLuckily, you survived. But how and from what? The ship's alarm was triggered by an impending supernova.\nHowever, because of *redacted* you have survived! And you didn't even know what danger you were in!\n")
             } else {
                 println!("\nUnfortunately, you don't find anything there.\n");
             }
@@ -286,7 +287,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
                 println!("*#$D#*UD#@()$@H#R()@#)(RJH#DHUFH*(W(#$&@#$@#GD*(!@Q#&*$Y@#$YRH&HCJ@()#)_DHUJHFUDHUISHF*DFUHS*()#EYRH@WQ#(*RYU@Q#*(R(ED(FISHUDFY(*@#&QY&*RT@&#*R*(YY*(EYR(*@#&YG@#TYUDGF^SG^TFASTEFD@&*#$*U#*(@%YU*$@Y*YRU*FU()$WE")
             }
         }
-        (_, _) => return,
+        (_, _) => {}
     }
 }
 
