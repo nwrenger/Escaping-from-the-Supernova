@@ -62,7 +62,7 @@ fn main() {
                     return;
                 }
                 if input == 2 {
-                    questions::answers(data[2], 3, input);
+                    questions::answers(data[2], 2, input);
                     let input = questions::questions(data[3], 4);
                     if input == 137 {
                         println!("Your current Seed: {seed:?}");
