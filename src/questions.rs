@@ -55,17 +55,17 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
             input
         }
         (3, 2) => {
-            let input = select("As the door is opening, you see a hole in the hull of the ship and you see the control panel, which is on fire. What do you fix first?.\n(hull, control console)\n", &["hull".to_owned(), "control console".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("As the door is opening, you see a hole in the hull of the ship and you see the control panel, which is on fire. What do you fix first?.\n", &["hull".to_owned(), "control console".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(2, 3, input);
             input
         }
         (3, 3) => {
-            let input = select("As you enter the room, you can either go to a chessboard on a table or to a flux capacitor, which can reverse the time. Wh.\n(chessboard, flux capacitor)\n", &["chessboard".to_owned(), "flux capacitor".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("As you enter the room, you can either go to a chessboard on a table or to a flux capacitor, which can reverse the time. What do want todo?\n", &["chessboard".to_owned(), "flux capacitor".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(3, 3, input);
             input
         }
         (4, 1) => {
-            let input = select("You can deactivate the alarm and go back to sleep, or go back to the previous room.\n(Deactivate alarm and go back to sleep, Go back)\n", &["Deactivate alarm and go back to sleep".to_owned(), "Go back".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("You can deactivate the alarm and go back to sleep, or go back to the previous room.\n", &["Deactivate alarm and go back to sleep".to_owned(), "Go back".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(1, 4, input);
             if input == 1 {
                 137
@@ -74,7 +74,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
             }
         }
         (4, 2) => {
-            let input = select("You can go back to the previous room, or initiate a reactor meltdown and...die I guess(why the f would you do that).\n(Go back, Initiate Reactor meltdown)\n", &["Go back".to_owned(), "Initiate Reactor meltdown".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("You can go back to the previous room, or initiate a reactor meltdown and...die I guess(why the f would you do that).\n", &["Go back".to_owned(), "Initiate Reactor meltdown".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(2, 4, input);
             if input == 2 {
                 137
@@ -83,7 +83,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
             }
         }
         (4, 3) => {
-            let input = select("You can go back to the previous room, or @#($(#J$QIJ#RES)).\n(Go back, _)@#$#IR)@#RK)\n", &["Go back".to_owned(), "_)@#$#IR)@#RK".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("You can go back to the previous room, or @#($(#J$QIJ#RES)).\n", &["Go back".to_owned(), "_)@#$#IR)@#RK".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(3, 4, input);
             input
         }
@@ -91,10 +91,9 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
     }
 }
 
-
 pub fn answers(data: u8, qst: u8, input: u8) {
     match (qst, data) {
-        (1, 1 | 2 | 3) => {
+        (1, 1..=3) => {
             if input == data {
                 return;
             }
@@ -104,7 +103,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
                 println!("\nUnfortunately, you don't find anything there.\n");
             }
         }
-        (2, 1 | 2 | 3) => {
+        (2, 1..=3) => {
             if data == 1 || data == 2 || data == 3 {
                 if input == 1 {
                     println!("\nYou go to the bridge.\n");
@@ -132,7 +131,10 @@ pub fn answers(data: u8, qst: u8, input: u8) {
             if input == 2 {
                 println!("You go to the annoying Fly.\n");
                 loop {
-                    let num = question("Do you want to kill the fly or negotiate with it?\n", &["kill".to_owned(), "negotiate".to_owned()]);
+                    let num = question(
+                        "Do you want to kill the fly or negotiate with it?\n",
+                        &["kill".to_owned(), "negotiate".to_owned()],
+                    );
                     if num == 1 {
                         println!("You use your laser and deal 2d4 damage to the fly.\nUnfortunately, you also blast a hole in the hull of the ship, and everything gets sucked out into the vacuum of space, including you. You have died!\n");
                         return;
@@ -148,7 +150,10 @@ pub fn answers(data: u8, qst: u8, input: u8) {
             if input == 1 {
                 println!("The hole in the hull gets bigger and bigger and the pull into space gets stronger and stronger. And you begin to see better through it.\nSuddenly Jesus appears and you can see him through that hole.");
                 loop {
-                    let num = question("Do you want to jump into Jesus arms or do you want to fix up the hole?\n", &["Jesus".to_owned(), "Fix up the hole".to_owned()]);
+                    let num = question(
+                        "Do you want to jump into Jesus arms or do you want to fix up the hole?\n",
+                        &["Jesus".to_owned(), "Fix up the hole".to_owned()],
+                    );
                     if num == 1 {
                         println!("As you epicly dive into space, you can see Jesus smile and getting brighter and brighter.\nYou died from Suffocation! Jesus welcomed you in his arms.\n");
                         return;
@@ -238,6 +243,10 @@ pub fn answers(data: u8, qst: u8, input: u8) {
 }
 
 pub fn question(qst: &str, num_answers: &[String]) -> u8 {
-    select(qst, num_answers, false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1
+    select(qst, num_answers, false, false)
+        .unwrap()
+        .iter()
+        .position(|&x| x)
+        .unwrap() as u8
+        + 1
 }
-

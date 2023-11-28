@@ -8,7 +8,7 @@ use console_utils::input;
 fn main() {
     println!(
         "{}",
-        r#"
+        r"
  _____                           _                  __                         
 |  ___|                         (_)                / _|                        
 | |__   ___   ___   __ _  _ __   _  _ __    __ _  | |_  _ __   ___   _ __ ___  
@@ -16,14 +16,14 @@ fn main() {
 | |___ \__ \| (__ | (_| || |_) || || | | || (_| | | |  | |   | (_) || | | | | |
 \____/ |___/ \___| \__,_|| .__/ |_||_| |_| \__, | |_|  |_|    \___/ |_| |_| |_|
                          | |                __/ |                              
-                         |_|               |___/                               "#
+                         |_|               |___/                               "
             .yellow()
     );
 
     thread::sleep(Duration::from_secs_f64(1.5));
     println!(
         "{}",
-        r#"
+        r"
  _    _             _____                                                       
 | |  | |           /  ___|                                                      
 | |_ | |__    ___  \ `--.  _   _  _ __    ___  _ __  _ __    ___  __   __  __ _ 
@@ -31,21 +31,19 @@ fn main() {
 | |_ | | | ||  __/ /\__/ /| |_| || |_) ||  __/| |   | | | || (_) | \ V / | (_| |
  \__||_| |_| \___| \____/  \__,_|| .__/  \___||_|   |_| |_| \___/   \_/   \__,_|
                                  | |                                            
-                                 |_|                                            "#
+                                 |_|                                            "
             .yellow()
     );
     thread::sleep(Duration::from_secs_f64(1.5));
     println!("a Textadventure from {}\n", "Nils Wrenger".red());
 
     thread::sleep(Duration::from_secs_f64(1.0));
-    let seed = match input(
-        "Give your current seed or press enter for a random seed (1-255):",
+    let seed = input(
+        "Give your current seed or press enter for a random seed (0-255):",
         true,
         false,
-    ) {
-        Some(i) => Some(i.parse::<usize>().unwrap().try_into().unwrap_or(0)),
-        None => None,
-    };
+    )
+    .map(|i| i.parse::<usize>().unwrap().try_into().unwrap_or(0));
 
     let seed = generation::seeder(seed);
     println!("Your current Seed: {seed}");
