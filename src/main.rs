@@ -3,6 +3,7 @@ use std::time::Duration;
 mod generation;
 mod questions;
 use colored::Colorize;
+use console_utils::input;
 
 fn main() {
     println!(
@@ -37,14 +38,17 @@ fn main() {
     println!("a Textadventure from {}\n", "Nils Wrenger".red());
 
     thread::sleep(Duration::from_secs_f64(1.0));
-    let seed = questions::question_advanced(
-        "Give your current seed or press enter for a random seed:",
-        255,
+    let seed = match input(
+        "Give your current seed or press enter for a random seed (1-255):",
         true,
-    );
+        false,
+    ) {
+        Some(i) => Some(i.parse::<usize>().unwrap().try_into().unwrap_or(0)),
+        None => None,
+    };
 
     let seed = generation::seeder(seed);
-    println!("Your current Seed: {seed:?}");
+    println!("Your current Seed: {seed}");
 
     let data = generation::generator(seed);
     // println!("Data:{data:?}");
