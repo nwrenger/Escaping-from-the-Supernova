@@ -3,7 +3,7 @@ use std::time::Duration;
 mod generation;
 mod questions;
 use colored::Colorize;
-use console_utils::input;
+use console_utils::{input, spinner, SpinnerType};
 
 fn main() {
     println!(
@@ -20,7 +20,7 @@ fn main() {
             .yellow()
     );
 
-    thread::sleep(Duration::from_secs_f64(1.5));
+    spinner(1.5, SpinnerType::Dots);
     println!(
         "{}",
         r"
@@ -34,10 +34,10 @@ fn main() {
                                  |_|                                            "
             .yellow()
     );
-    thread::sleep(Duration::from_secs_f64(1.5));
+    spinner(1.5, SpinnerType::Dots);
     println!("a Textadventure from {}\n", "Nils Wrenger".red());
 
-    thread::sleep(Duration::from_secs_f64(1.0));
+    spinner(1.5, SpinnerType::Dots);
     let seed = input(
         "Give your current seed or press enter for a random seed (0-255):",
         true,
@@ -51,7 +51,10 @@ fn main() {
     let data = generation::generator(seed);
     // println!("Data:{data:?}");
 
-    thread::sleep(Duration::from_secs_f64(1.0));
+    spinner(
+        1.5,
+        SpinnerType::Custom(vec!["You.", "Are..", "Gonna...", "Die.."]),
+    );
     loop {
         let input = questions::questions(data[0], 1);
         if input == data[0] {
