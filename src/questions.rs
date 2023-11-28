@@ -2,9 +2,9 @@ use console_utils::select;
 
 pub fn questions(data: u8, qst: u8) -> u8 {
     match (qst, data) {
-        (1, 1) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with an old-fashioned key, you need it. Where is the key?\n", &["Pants".to_owned(), "Medicine Carbinet".to_owned(), "Under the Bed".to_owned(), "go back to sleep".to_owned()]),
-        (1, 2) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with a keypad, you need a code. Where is the code?\n", &["under the bed".to_owned(), "on the pinboard".to_owned(), "on your smartphone".to_owned(), "go back to sleep".to_owned()]),
-        (1, 3) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with an old-fashioned key, you need it. Where is the key?\n", &["keyhole".to_owned(), "wardrobe".to_owned(), "pants".to_owned(), "go back to sleep".to_owned()]),
+        (1, 1) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with an old-fashioned key, you need it. Where is the key?\n", &["Pants", "Medicine Carbinet", "Under the Bed", "go back to sleep"]),
+        (1, 2) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with a keypad, you need a code. Where is the code?\n", &["under the bed", "on the pinboard", "on your smartphone", "go back to sleep"]),
+        (1, 3) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with an old-fashioned key, you need it. Where is the key?\n", &["keyhole", "wardrobe", "pants", "go back to sleep"]),
         (2, 1) => question(
             r#"
 There is it!
@@ -17,7 +17,7 @@ You unlock the door.
 └───┴─────┴───┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
 (Your position(Y))"#,
-            &["Bridge(1)".to_owned(), "Reactor(2)".to_owned()],
+            &["Bridge(1)", "Reactor(2)"],
         ),
         (2, 2) => question(
             r#"
@@ -34,7 +34,7 @@ You unlock the door.
      └───┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
 (Your position(Y))"#,
-            &["Bridge(1)".to_owned(), "Reactor(2)".to_owned()],
+            &["Bridge(1)", "Reactor(2)"],
         ),
         (2, 3) => question(
             r#"
@@ -47,25 +47,25 @@ You unlock the door.
  └┘ └┘ └┘ └┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
 (Your position(Y))"#,
-            &["Bridge(1)".to_owned(), "Reactor(2)".to_owned()],
+            &["Bridge(1)", "Reactor(2)"],
         ),
         (3, 1) => {
-            let input = select("In the bridge, you can take a look at the control console or attack an annoying fly.\n", &["control console".to_owned(), "annoying Fly".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("In the bridge, you can take a look at the control console or attack an annoying fly.\n", &["control console", "annoying Fly"], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(1, 3, input);
             input
         }
         (3, 2) => {
-            let input = select("As the door is opening, you see a hole in the hull of the ship and you see the control panel, which is on fire. What do you fix first?.\n", &["hull".to_owned(), "control console".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("As the door is opening, you see a hole in the hull of the ship and you see the control panel, which is on fire. What do you fix first?.\n", &["hull", "control console"], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(2, 3, input);
             input
         }
         (3, 3) => {
-            let input = select("As you enter the room, you can either go to a chessboard on a table or to a flux capacitor, which can reverse the time. What do want todo?\n", &["chessboard".to_owned(), "flux capacitor".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("As you enter the room, you can either go to a chessboard on a table or to a flux capacitor, which can reverse the time. What do want todo?\n", &["chessboard", "flux capacitor"], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(3, 3, input);
             input
         }
         (4, 1) => {
-            let input = select("You can deactivate the alarm and go back to sleep, or go back to the previous room.\n", &["Deactivate alarm and go back to sleep".to_owned(), "Go back".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("You can deactivate the alarm and go back to sleep, or go back to the previous room.\n", &["Deactivate alarm and go back to sleep", "Go back"], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(1, 4, input);
             if input == 1 {
                 137
@@ -74,7 +74,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
             }
         }
         (4, 2) => {
-            let input = select("You can go back to the previous room, or initiate a reactor meltdown and...die I guess(why the f would you do that).\n", &["Go back".to_owned(), "Initiate Reactor meltdown".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("You can go back to the previous room, or initiate a reactor meltdown and...die I guess(why the f would you do that).\n", &["Go back", "Initiate Reactor meltdown"], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(2, 4, input);
             if input == 2 {
                 137
@@ -83,7 +83,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
             }
         }
         (4, 3) => {
-            let input = select("You can go back to the previous room, or @#($(#J$QIJ#RES)).\n", &["Go back".to_owned(), "_)@#$#IR)@#RK".to_owned()], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
+            let input = select("You can go back to the previous room, or @#($(#J$QIJ#RES)).\n", &["Go back", "_)@#$#IR)@#RK"], false, false).unwrap().iter().position(|&x| x).unwrap() as u8 + 1;
             answers(3, 4, input);
             input
         }
@@ -117,7 +117,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
             if input == 1 {
                 println!("On the control console, you see that a supernova will obliterate the ship and you in the next 5 minutes.");
                 loop {
-                    let num = question("Do you want to fly behind a moon nearby or do nothing and wait for your death?\n", &["Fly behind moon".to_owned(), "Wait for death".to_owned()]);
+                    let num = question("Do you want to fly behind a moon nearby or do nothing and wait for your death?\n", &["Fly behind moon", "Wait for death"]);
                     if num == 1 {
                         println!("Did the moon protect you? Yes, as the moon has a zitanium component that reflects any kind of energy, shockwaves, etc.\nYou lie down again, turn on the autopilot, and enjoy the sleep and relaxation. You have survived!\n");
                         return;
@@ -133,7 +133,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
                 loop {
                     let num = question(
                         "Do you want to kill the fly or negotiate with it?\n",
-                        &["kill".to_owned(), "negotiate".to_owned()],
+                        &["kill", "negotiate"],
                     );
                     if num == 1 {
                         println!("You use your laser and deal 2d4 damage to the fly.\nUnfortunately, you also blast a hole in the hull of the ship, and everything gets sucked out into the vacuum of space, including you. You have died!\n");
@@ -152,7 +152,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
                 loop {
                     let num = question(
                         "Do you want to jump into Jesus arms or do you want to fix up the hole?\n",
-                        &["Jesus".to_owned(), "Fix up the hole".to_owned()],
+                        &["Jesus", "Fix up the hole"],
                     );
                     if num == 1 {
                         println!("As you epicly dive into space, you can see Jesus smile and getting brighter and brighter.\nYou died from Suffocation! Jesus welcomed you in his arms.\n");
@@ -169,7 +169,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
                 loop {
                     let num = question(
                         "Do you want to extinguish it or run away?\n)",
-                        &["extinguish".to_owned(), "RUN!?!?".to_owned()],
+                        &["extinguish", "RUN!?!?"],
                     );
                     if num == 1 {
                         println!("You extinguished the fire in seconds. Luckily, the fire extinguisher was loacated nearby. The hole in the hull got bigger and pulled you out into space. You have died!\n");
@@ -188,7 +188,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
             if input == 1 {
                 println!("You start to play chess with the Supernova\n");
                 loop {
-                    let num = question("You know to play the Damen Gambit Opening and you can also try to throw the game.\n", &["Damen Gambit".to_owned(), "Throw".to_owned()]);
+                    let num = question("You know to play the Damen Gambit Opening and you can also try to throw the game.\n", &["Damen Gambit", "Throw"]);
                     if num == 1 {
                         println!("You open your game with the Damen Gambit Opening. The Supernova is no real opponent for you and you win in the 5 next turns.\nUnfortunately, the Supernova gets angry from the loose and explodes. You have died!\n");
                         return;
@@ -202,7 +202,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
             if input == 2 {
                 println!("You go to the Flux Capacitor.\n");
                 loop {
-                    let num = question("You can either reverse time or throw the precious Flux Capacitor at the Supernova.\n", &["reverse time".to_owned(), "throw the precious".to_owned()]);
+                    let num = question("You can either reverse time or throw the precious Flux Capacitor at the Supernova.\n", &["reverse time", "throw the precious"]);
                     if num == 1 {
                         println!("You accidently reversed your time completly, now you live your life backwards from this point in time. So technecally, you have died!\n");
                         return;
@@ -242,7 +242,7 @@ pub fn answers(data: u8, qst: u8, input: u8) {
     }
 }
 
-pub fn question(qst: &str, num_answers: &[String]) -> u8 {
+pub fn question(qst: &str, num_answers: &[&str]) -> u8 {
     select(qst, num_answers, false, false)
         .unwrap()
         .iter()
