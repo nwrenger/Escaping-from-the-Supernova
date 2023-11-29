@@ -1,12 +1,13 @@
 mod generation;
 mod questions;
 use colored::Colorize;
-use console_utils::{input, spinner, SpinnerType};
+use console_utils::{input, reveal, spinner, SpinnerType};
 
 fn main() {
-    println!(
-        "{}",
-        r"
+    reveal(
+        &format!(
+            "{}",
+            r"
  _____                           _                  __                         
 |  ___|                         (_)                / _|                        
 | |__   ___   ___   __ _  _ __   _  _ __    __ _  | |_  _ __   ___   _ __ ___  
@@ -14,14 +15,18 @@ fn main() {
 | |___ \__ \| (__ | (_| || |_) || || | | || (_| | | |  | |   | (_) || | | | | |
 \____/ |___/ \___| \__,_|| .__/ |_||_| |_| \__, | |_|  |_|    \___/ |_| |_| |_|
                          | |                __/ |                              
-                         |_|               |___/                               "
-            .yellow()
+                         |_|               |___/                               
+"
+                .yellow()
+        ),
+        0.005,
     );
 
     spinner(1.5, SpinnerType::Dots);
-    println!(
-        "{}",
-        r"
+    reveal(
+        &format!(
+            "{}",
+            r"
  _    _             _____                                                       
 | |  | |           /  ___|                                                      
 | |_ | |__    ___  \ `--.  _   _  _ __    ___  _ __  _ __    ___  __   __  __ _ 
@@ -29,24 +34,24 @@ fn main() {
 | |_ | | | ||  __/ /\__/ /| |_| || |_) ||  __/| |   | | | || (_) | \ V / | (_| |
  \__||_| |_| \___| \____/  \__,_|| .__/  \___||_|   |_| |_| \___/   \_/   \__,_|
                                  | |                                            
-                                 |_|                                            "
-            .yellow()
+                                 |_|                                            
+"
+                .yellow()
+        ),
+        0.005,
     );
     spinner(1.5, SpinnerType::Dots);
-    println!("a Textadventure from {}\n", "Nils Wrenger".red());
+    reveal("a Textadventure from Nils Wrenger\n", 0.05);
 
-    spinner(1.5, SpinnerType::Dots);
     let seed = input(
-        "Give your current seed or press enter for a random seed (0-255):",
+        "Give your current seed or press enter for a random seed (0-255): ",
         true,
-        false,
     );
 
     let seed = generation::seeder(seed);
-    println!("Your current Seed: {seed}\n");
+    reveal(&format!("Your current Seed: {seed}\n"), 0.05);
 
     let data = generation::generator(seed);
-    // println!("Data:{data:?}");
 
     spinner(
         1.5,
@@ -61,14 +66,14 @@ fn main() {
                 if input == 1 {
                     questions::answers(data[1], 2, input);
                     questions::questions(data[2], 3);
-                    println!("Your current Seed: {seed:?}");
+                    reveal(&format!("Your current Seed: {seed}\n"), 0.05);
                     return;
                 }
                 if input == 2 {
                     questions::answers(data[2], 2, input);
                     let input = questions::questions(data[3], 4);
                     if input == 137 {
-                        println!("Your current Seed: {seed:?}");
+                        reveal(&format!("Your current Seed: {seed}\n"), 0.05);
                         return;
                     }
                 }
@@ -76,7 +81,7 @@ fn main() {
         }
         if input == 4 {
             questions::answers(data[0], 1, input);
-            println!("Your current Seed: {seed:?}");
+            reveal(&format!("Your current Seed: {seed}\n"), 0.05);
             return;
         } else {
             questions::answers(data[0], 1, input);

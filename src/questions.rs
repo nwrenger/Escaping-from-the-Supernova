@@ -6,7 +6,7 @@ pub fn questions(data: u8, qst: u8) -> u8 {
         (1, 2) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with a keypad, you need a code. Where is the code?\n", &["under the bed", "on the pinboard", "on your smartphone", "go back to sleep"]),
         (1, 3) => question("You are on a spaceship. You are on your way to your home planet, Earth.\nYou just finished your last mission of the month and want to relax a bit.\nYou lie down in your bed and let the autopilot control the spacecraft. But then you hear a ship alarm.\nYou get up. Since you always lock the door to your quarters with an old-fashioned key, you need it. Where is the key?\n", &["keyhole", "wardrobe", "pants", "go back to sleep"]),
         (2, 1) => question(
-            r#"
+            r"
 There is it!
 You unlock the door.
      ┌───┐     
@@ -16,11 +16,11 @@ You unlock the door.
 │ Y │     │ 2 │
 └───┴─────┴───┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
-(Your position(Y))"#,
+(Your position(Y))",
             &["Bridge(1)", "Reactor(2)"],
         ),
         (2, 2) => question(
-            r#"
+            r"
 There is it!
 You unlock the door.
     ┌┬───┬┐
@@ -33,11 +33,11 @@ You unlock the door.
      │ 1 │
      └───┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
-(Your position(Y))"#,
+(Your position(Y))",
             &["Bridge(1)", "Reactor(2)"],
         ),
         (2, 3) => question(
-            r#"
+            r"
 There is it!
 You unlock the door.
     ┌───┐
@@ -46,7 +46,7 @@ You unlock the door.
 └┬┬─┼┬─┬┼─┬┬┘
  └┘ └┘ └┘ └┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
-(Your position(Y))"#,
+(Your position(Y))",
             &["Bridge(1)", "Reactor(2)"],
         ),
         (3, 1) => {
