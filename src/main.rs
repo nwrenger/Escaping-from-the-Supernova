@@ -1,5 +1,3 @@
-use std::thread;
-use std::time::Duration;
 mod generation;
 mod questions;
 use colored::Colorize;
@@ -42,19 +40,19 @@ fn main() {
         "Give your current seed or press enter for a random seed (0-255):",
         true,
         false,
-    )
-    .map(|i| i.parse::<usize>().unwrap().try_into().unwrap_or(0));
+    );
 
     let seed = generation::seeder(seed);
-    println!("Your current Seed: {seed}");
+    println!("Your current Seed: {seed}\n");
 
     let data = generation::generator(seed);
     // println!("Data:{data:?}");
 
     spinner(
         1.5,
-        SpinnerType::Custom(vec!["You.", "Are..", "Gonna...", "Die.."]),
+        SpinnerType::Custom(vec!["You.", "Are.", "Gonna.", "Die."]),
     );
+
     loop {
         let input = questions::questions(data[0], 1);
         if input == data[0] {
