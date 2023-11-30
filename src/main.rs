@@ -41,7 +41,7 @@ fn main() {
         0.005,
     );
     spinner(1.5, SpinnerType::Dots);
-    reveal("a Textadventure from Nils Wrenger\n", 0.05);
+    reveal(&format!("a Textadventure from {}\n", "Nils Wrenger".red()), 0.05);
 
     let seed = input(
         "Give your current seed or press enter for a random seed (0-255): ",
