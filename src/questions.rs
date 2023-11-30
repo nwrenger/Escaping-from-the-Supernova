@@ -1,4 +1,4 @@
-use console_utils::select;
+use console_utils::input::select;
 
 pub fn questions(data: u8, qst: u8) -> u8 {
     match (qst, data) {

@@ -1,7 +1,7 @@
 mod generation;
 mod questions;
 use colored::Colorize;
-use console_utils::{input, reveal, spinner, SpinnerType};
+use console_utils::input::{input, reveal, spinner, SpinnerType};
 
 fn main() {
     reveal(
