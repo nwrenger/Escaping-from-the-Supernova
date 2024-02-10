@@ -12,13 +12,12 @@ pub fn seeder(seed: Option<u8>) -> u8 {
     }
 }
 
-pub fn generator(seed: u8) -> Vec<u8> {
+pub fn generator(seed: u8) -> [u8; 4] {
     let mut rng = SmallRng::seed_from_u64(seed.into());
-    let nums: Vec<u8> = vec![
+    [
         rng.gen_range(1..4),
         rng.gen_range(1..4),
         rng.gen_range(1..4),
         rng.gen_range(1..4),
-    ];
-    nums
+    ]
 }
