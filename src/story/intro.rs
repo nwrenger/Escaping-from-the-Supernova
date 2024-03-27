@@ -1,5 +1,5 @@
 use colored::Colorize;
-use console_utils::input::{input, reveal, spinner, SpinnerType};
+use console_utils::input::{input, reveal, spinner, Empty, SpinnerType};
 
 use crate::rng::{generator, seeder};
 
@@ -49,10 +49,7 @@ pub fn init() {
         0.05,
     );
     // seed stuff
-    let seed = input(
-        "Give your current seed or press enter for a random seed (0-255): ",
-        true,
-    );
+    let seed: Empty<u8> = input("Give your current seed or press enter for a random seed (0-255)");
 
     let seed = seeder(seed);
     reveal(&format!("Your current Seed: {seed}\n"), 0.05);

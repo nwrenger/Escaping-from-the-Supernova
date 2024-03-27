@@ -7,12 +7,7 @@ pub mod part3;
 pub mod part4;
 
 pub fn select_num(qst: &str, num_answers: &[&str]) -> u8 {
-    select(qst, num_answers, false, false)
-        .unwrap()
-        .iter()
-        .position(|&x| x)
-        .unwrap() as u8
-        + 1
+    (select(qst, num_answers) + 1).try_into().unwrap()
 }
 
 pub fn end(str: &str, seed: u8) {

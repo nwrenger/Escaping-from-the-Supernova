@@ -1,10 +1,11 @@
 use std::u8;
 
+use console_utils::input::Empty;
 use rand::prelude::*;
 use rand::rngs::SmallRng;
 
-pub fn seeder(seed: Option<u8>) -> u8 {
-    if let Some(seed) = seed {
+pub fn seeder(seed: Empty<u8>) -> u8 {
+    if let Empty::Some(seed) = seed {
         seed
     } else {
         let mut rng = rand::thread_rng();

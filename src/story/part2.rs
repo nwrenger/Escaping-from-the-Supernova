@@ -18,7 +18,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
 (Your position(Y))"
                 );
             }
-            match select_num("Where do you want to go?\n", &["Bridge(1)", "Reactor(2)"]) {
+            match select_num("Where do you want to go?", &["Bridge(1)", "Reactor(2)"]) {
                 1 => {
                     part3::init(proc, seed);
                 }
@@ -47,7 +47,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
 (Your position(Y))"
                 );
             }
-            match select_num("Where do you want to go?\n", &["Bridge(1)", "Reactor(2)"]) {
+            match select_num("Where do you want to go?", &["Bridge(1)", "Reactor(2)"]) {
                 1 => {
                     part3::init(proc, seed);
                 }
@@ -72,7 +72,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
 (Your position(Y))"
                 );
             }
-            match select_num("Where do you want to go?\n", &["Bridge(1)", "Reactor(2)"]) {
+            match select_num("Where do you want to go?", &["Bridge(1)", "Reactor(2)"]) {
                 1 => {
                     part3::init(proc, seed);
                 }
