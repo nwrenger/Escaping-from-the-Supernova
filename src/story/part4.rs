@@ -4,7 +4,7 @@ pub fn init(proc: [u8; 4], seed: u8) {
     match proc[3] {
         1 => {
             println!("\nYou go to the Reactor.\n");
-            match select_num("You can deactivate the alarm and go back to sleep, or go back to the previous room.\n", &["Deactivate alarm and go back to sleep", "Go back"]) {
+            match select_num("You can deactivate the alarm and go back to sleep, or go back to the previous room.", &["Deactivate alarm and go back to sleep", "Go back"]) {
                 1 => end("You go back to sleep. But wait, there was something you forgot? Oh, right, a Supernova... You have died!", seed),
                 2 => {
                     println!("\nYou go back to the previous room.\n");
@@ -15,7 +15,7 @@ pub fn init(proc: [u8; 4], seed: u8) {
         }
         2 => {
             println!("\nYou go to the Reactor.\n");
-            match select_num("You can go back to the previous room, or initiate a Reactor meltdown and...die I guess(why the f would you do that).\n", &["Go back", "Initiate Reactor meltdown"]) {
+            match select_num("You can go back to the previous room, or initiate a Reactor meltdown and...die I guess(why the f would you do that).", &["Go back", "Initiate Reactor meltdown"]) {
                 1 => {
                     println!("\nYou go back to the previous room.\n");
                     part2::init(proc, seed, false);
@@ -27,7 +27,7 @@ pub fn init(proc: [u8; 4], seed: u8) {
         3 => {
             println!("\nYou go to the Reactor.\n");
             match select_num(
-                "You can go back to the previous room, or @#($(#J$QIJ#RES)).\n",
+                "You can go back to the previous room, or @#($(#J$QIJ#RES)).",
                 &["Go back", "_)@#$#IR)@#RK"],
             ) {
                 1 => {
