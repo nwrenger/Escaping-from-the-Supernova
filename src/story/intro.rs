@@ -1,5 +1,7 @@
-use colored::Colorize;
-use console_utils::input::{input, reveal, spinner, Empty, SpinnerType};
+use console_utils::{
+    input::{input, reveal, spinner, Empty, SpinnerType},
+    styled::{Color, StyledText},
+};
 
 use crate::rng::{generator, seeder};
 
@@ -8,7 +10,8 @@ pub fn init() {
     reveal(
         &format!(
             "{}",
-            r"
+            StyledText::new(
+                r"
  _____                           _                  __                         
 |  ___|                         (_)                / _|                        
 | |__   ___   ___   __ _  _ __   _  _ __    __ _  | |_  _ __   ___   _ __ ___  
@@ -18,7 +21,8 @@ pub fn init() {
                          | |                __/ |                              
                          |_|               |___/                               
 "
-            .yellow()
+            )
+            .fg(Color::Yellow)
         ),
         0.0005,
     );
@@ -26,7 +30,8 @@ pub fn init() {
     reveal(
         &format!(
             "{}",
-            r"
+            StyledText::new(
+                r"
  _    _             _____                                                       
 | |  | |           /  ___|                                                      
 | |_ | |__    ___  \ `--.  _   _  _ __    ___  _ __  _ __    ___  __   __  __ _ 
@@ -37,7 +42,8 @@ pub fn init() {
                                  |_|                                            
 
 "
-            .yellow()
+            )
+            .fg(Color::Yellow)
         ),
         0.0005,
     );
@@ -45,7 +51,10 @@ pub fn init() {
     // author
     spinner(1.5, SpinnerType::Dots);
     reveal(
-        &format!("a Textadventure from {}\n", "Nils Wrenger".red()),
+        &format!(
+            "a Textadventure from {}\n",
+            StyledText::new("Nils Wrenger").fg(Color::Red)
+        ),
         0.05,
     );
     // seed stuff
@@ -56,7 +65,7 @@ pub fn init() {
 
     spinner(
         1.0,
-        SpinnerType::Custom(vec!["You.", "Are.", "Gonna.", "Die."]),
+        SpinnerType::Custom(&["You.", "Are.", "Gonna.", "Die."]),
     );
 
     super::part1::init(generator(seed), seed, true)

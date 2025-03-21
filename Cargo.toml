@@ -3,9 +3,6 @@ name = "efts"
 version = "0.3.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-colored = "3.0.0"
-console-utils = "1.6.1"
-rand = { version = "0.8.5", features = ["small_rng"] }
+console-utils = "1.7.0"
+rand = { version = "0.9.0", features = ["small_rng"] }
