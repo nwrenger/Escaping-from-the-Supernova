@@ -4,5 +4,5 @@ version = "0.3.0"
 edition = "2021"
 
 [dependencies]
-console-utils = "1.7.0"
+console-utils = { path ="/Users/nils/Documents/code/sys/console-utils-rs" }
 rand = { version = "0.9.0", features = ["small_rng"] }

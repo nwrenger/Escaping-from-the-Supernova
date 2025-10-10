@@ -3,7 +3,7 @@ use rand::prelude::*;
 use rand::rngs::SmallRng;
 
 pub fn seeder(seed: Empty<u8>) -> u8 {
-    if let Empty::Some(seed) = seed {
+    if let Empty(Some(seed)) = seed {
         seed
     } else {
         let mut rng = rand::rng();

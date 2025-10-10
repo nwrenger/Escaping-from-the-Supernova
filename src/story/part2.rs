@@ -1,21 +1,23 @@
+use crate::story::intro::print_reveal;
+
 use super::{part3, part4, select_num};
 
 pub fn init(proc: [u8; 4], seed: u8, intro: bool) {
     match proc[1] {
         1 => {
             if intro {
-                println!(
+                print_reveal(
                     r"
 There is it!
 You unlock the door.
-     ┌───┐     
-    ┌┘   └┐    
-    │  1  │    
+     ┌───┐
+    ┌┘   └┐
+    │  1  │
 ┌───┼─────┼───┐
 │ Y │     │ 2 │
 └───┴─────┴───┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
-(Your position(Y))"
+(Your position(Y))",
                 );
             }
             match select_num("Where do you want to go?", &["Bridge(1)", "Reactor(2)"]) {
@@ -30,7 +32,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
         }
         2 => {
             if intro {
-                println!(
+                print_reveal(
                     r"
 There is it!
 You unlock the door.
@@ -44,7 +46,7 @@ You unlock the door.
      │ 1 │
      └───┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
-(Your position(Y))"
+(Your position(Y))",
                 );
             }
             match select_num("Where do you want to go?", &["Bridge(1)", "Reactor(2)"]) {
@@ -59,7 +61,7 @@ You can go to the bridge to see what's going on or to the reactor to turn off th
         }
         3 => {
             if intro {
-                println!(
+                print_reveal(
                     r"
 There is it!
 You unlock the door.
@@ -69,7 +71,7 @@ You unlock the door.
 └┬┬─┼┬─┬┼─┬┬┘
  └┘ └┘ └┘ └┘
 You can go to the bridge to see what's going on or to the reactor to turn off the alarm.
-(Your position(Y))"
+(Your position(Y))",
                 );
             }
             match select_num("Where do you want to go?", &["Bridge(1)", "Reactor(2)"]) {

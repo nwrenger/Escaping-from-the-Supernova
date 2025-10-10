@@ -1,4 +1,6 @@
-use console_utils::input::{reveal, select};
+use console_utils::input::select;
+
+use crate::story::intro::print_reveal;
 
 pub mod intro;
 pub mod part1;
@@ -11,6 +13,6 @@ pub fn select_num(qst: &str, num_answers: &[&str]) -> u8 {
 }
 
 pub fn end(str: &str, seed: u8) {
-    println!("{}", str);
-    reveal(&format!("Your current Seed: {seed}\n"), 0.05);
+    print_reveal(&format!("{str}\n"));
+    print_reveal(&format!("Your current Seed: {seed}\n"));
 }
