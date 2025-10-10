@@ -1,8 +1,8 @@
 [package]
 name = "efts"
-version = "0.3.0"
+version = "0.3.1"
 edition = "2021"
 
 [dependencies]
-console-utils = { path ="/Users/nils/Documents/code/sys/console-utils-rs" }
-rand = { version = "0.9.0", features = ["small_rng"] }
+console-utils = "1.8.1"
+rand = { version = "0.9.2", features = ["small_rng"] }
