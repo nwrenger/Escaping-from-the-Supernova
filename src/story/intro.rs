@@ -6,11 +6,11 @@ use console_utils::{
 
 use crate::rng::{generator, seeder};
 
-pub const REVEAL_SKIP_KEY: Option<Key> = Some(Key::Char(' '));
-pub const REVEAL_TIME: f64 = 0.1;
+pub const REVEAL_SKIP: Option<(Key, f64)> = Some((Key::Char(' '), 0.01));
+pub const REVEAL_TIME: f64 = 0.1125;
 
 pub fn print_reveal(str: &str) {
-    reveal(str, REVEAL_TIME, REVEAL_SKIP_KEY);
+    reveal(str, REVEAL_TIME, REVEAL_SKIP);
 }
 
 pub fn init() {
